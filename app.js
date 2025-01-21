@@ -1,13 +1,18 @@
+require('dotenv').config()
 const express = require('express')
 const connectToDatabase = require('./database')
 const app = express()
 
+app.use(express.json())
+
 connectToDatabase()
-app.get("/about",function(req,res){
+app.post("/blog",function(req,res){
+    console.log(req.body)
     res.status(200).json({
-        name: "my name is nirmal dhakal"
+        message: "blog api hit successfully!"
     }  )
 })
+
 
 app.get("/", function(req, res){
     res.status(200).json({
@@ -16,7 +21,7 @@ app.get("/", function(req, res){
 })
   
 
-app.listen(5000,()=>{
+app.listen(process.env.PORT,()=>{
     console.log("project start successfully")
 })
 
