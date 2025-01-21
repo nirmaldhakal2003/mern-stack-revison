@@ -1,16 +1,17 @@
 const mongoose = require('mongoose')
-const Schema = new Schema()
+const Schema = mongoose.Schema
  
 
 const blogSchema = new Schema({
     title : {
-        type : String
+        type : String,
+        unique : true
     },
     subtitle : {
         type : String
     },
     description: {
-        type: Text   
+        type: String   
     },
     image : {
         type : String
